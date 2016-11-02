@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    api-level="25"
+    density="420dpi"
+    format="8"
+    plugin-version="2.2.0"
+    timestamp="15159524309092"
+    token="8432873590092892681"
+    verifier="FULL_BUILD_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="1660" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="514" />
+    <task
+        name="verifier"
+        duration="84" />
+
+    <artifact
+        location="E:\GitHub\BuzzedFeed\BuzzedFeed\Application\build\outputs\apk\Application-debug.apk"
+        type="MAIN" />
+
+    <build
+        timestamp="15159524309092"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="E:\GitHub\BuzzedFeed\BuzzedFeed\Application\build\outputs\apk\Application-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

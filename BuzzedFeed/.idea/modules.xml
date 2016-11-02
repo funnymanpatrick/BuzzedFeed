@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Application/Application.iml" filepath="$PROJECT_DIR$/Application/Application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HorizontalPaging.iml" filepath="$PROJECT_DIR$/HorizontalPaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BuzzedFeed.iml" filepath="$PROJECT_DIR$/BuzzedFeed.iml" />
     </modules>
   </component>
 </project>
