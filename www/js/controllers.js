@@ -126,10 +126,7 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 
 	$scope.allFavDrink = function(){
 		$scope.drink = [];
-		// console.log(d[0].favorite);
 		for (i=0; i<$scope.all_drinks.length; i++){
-			console.log(d[i].name);
-			console.log(d[i].favorite);
 			if(d[i].fav == 't'){
 				console.log('hey this shit is true');
 				$scope.drink.push(d[i].name);
@@ -137,6 +134,16 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 		if ($scope.drink.length === 0) {
 		$scope.drink.push('No Favorites');
+		}
+	}
+
+	$scope.allDrink = function(){
+		$scope.drink = [];
+		for (i=0; i<$scope.all_drinks.length; i++){
+			$scope.drink.push(d[i].name);
+		}
+		if ($scope.drink.length === 0) {
+		$scope.drink.push('No Drinks');
 		}
 	}
 
