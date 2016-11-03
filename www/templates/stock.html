@@ -21,6 +21,9 @@
       text-align: center;
       color: white;
     }
+    .amount_label {
+      width: 50px;
+    }
   </style>
 </head>
 
@@ -38,17 +41,23 @@
 
     <button ng-click="searchAlcohol()"> Search </button>
 
+    <br>
+
     <input type="text" id="addedAlcohol">
 
-    <input type="number" id="addedAAmmount">
+    <input type="number" id="addedAAmmount" class = "amount_label">
 
     <button ng-click="addAlcohol()"> Add Booze </button>
 
+    <br>
+
     <input type="text" id="addedMixer">
 
-    <input type="number" id="addedMAmmount">
+    <input type="number" id="addedMAmmount" class = "amount_label">
 
     <button ng-click="addMixer()"> Add NAB </button>
+
+    <br>
 
     <input type="text" id="removedAlcohol">
 

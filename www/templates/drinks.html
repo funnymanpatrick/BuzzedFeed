@@ -21,6 +21,9 @@
       text-align: center;
       color: white;
     }
+    .rate_number {
+      width: 50px;
+    }
   </style>
 </head>
 
@@ -38,27 +41,30 @@
 
     <button ng-click="searchDrink()"> Search </button>
 
+    <button ng-click="allFavDrink()"> Show Favorites </button>
+
+    <button ng-click="allDrink()"> Show All </button>
+
+    <br>
+
     <input type="text" id="rateDrink">
 
-    <input type="number" id="rateScore">
+    <input type="number" id="rateScore" class = "rate_number">
 
     <button ng-click="rate()"> Rate </button>
+
+    <br>
 
     <input type="text" id="favDrink">
 
     <button ng-click="faveDrink()"> Favorite </button>
 
+    <br>
+
     <input type="text" id="unfavDrink">
 
     <button ng-click="unfaveDrink()"> Unfavorite </button>
 
-    <br>
-
-    <button ng-click="allFavDrink()"> Show Favorites </button>
-
-    <br>
-
-    <button ng-click="allDrink()"> Show All </button>
 
     <!-- Need to prompt for amount as well -->
 
