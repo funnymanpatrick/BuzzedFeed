@@ -1,3 +1,29 @@
+<head>
+  <style>
+    button {
+      background-color: #DB7705;
+      color: white;
+      font-weight: bold;
+    }
+    input {
+      border-style: solid;
+      border-width: 2px;
+      border-color: black;
+    }
+    ion-tabs {
+      background-color: #1a66ff;
+      color: white;
+    }
+    ion-footer-bar {
+      background-color: #1a66ff;
+    }
+    h3 {
+      text-align: center;
+      color: white;
+    }
+  </style>
+</head>
+
 <ion-view title="Stock" id="page2">
   <ion-content padding="true" class="has-header">
     <ul style="list-style-type:disc">
@@ -10,23 +36,23 @@
 
     <input type="text" id="searchedAlcohol">
 
-    <button ng-click="searchAlcohol()"> Search </button> 
+    <button ng-click="searchAlcohol()"> Search </button>
 
     <input type="text" id="addedAlcohol">
 
     <input type="number" id="addedAAmmount">
 
-    <button ng-click="addAlcohol()"> Add Booze </button> 
+    <button ng-click="addAlcohol()"> Add Booze </button>
 
     <input type="text" id="addedMixer">
 
     <input type="number" id="addedMAmmount">
 
-    <button ng-click="addMixer()"> Add NAB </button> 
+    <button ng-click="addMixer()"> Add NAB </button>
 
     <input type="text" id="removedAlcohol">
 
-    <button ng-click="removeAlcohol()"> Remove </button> 
+    <button ng-click="removeAlcohol()"> Remove </button>
     <!-- Need to prompt for amount as well -->
 
   </ion-content>

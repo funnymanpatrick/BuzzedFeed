@@ -1,3 +1,29 @@
+<head>
+  <style>
+    button {
+      background-color: #DB7705;
+      color: white;
+      font-weight: bold;
+    }
+    input {
+      border-style: solid;
+      border-width: 2px;
+      border-color: black;
+    }
+    ion-tabs {
+      background-color: #1a66ff;
+      color: white;
+    }
+    ion-footer-bar {
+      background-color: #1a66ff;
+    }
+    h3 {
+      text-align: center;
+      color: white;
+    }
+  </style>
+</head>
+
 <ion-view title="Drinks" id="page3">
   <ion-content padding="true" class="has-header">
     <ul style="list-style-type:disc">
@@ -10,21 +36,21 @@
 
     <input type="text" id="searchedDrink">
 
-    <button ng-click="searchDrink()"> Search </button> 
+    <button ng-click="searchDrink()"> Search </button>
 
     <input type="text" id="rateDrink">
 
     <input type="number" id="rateScore">
 
-    <button ng-click="rate()"> Rate </button> 
+    <button ng-click="rate()"> Rate </button>
 
     <input type="text" id="favDrink">
 
-    <button ng-click="faveDrink()"> Favorite </button> 
+    <button ng-click="faveDrink()"> Favorite </button>
 
     <input type="text" id="unfavDrink">
 
-    <button ng-click="unfaveDrink()"> Unfavorite </button> 
+    <button ng-click="unfaveDrink()"> Unfavorite </button>
 
     <br>
 
