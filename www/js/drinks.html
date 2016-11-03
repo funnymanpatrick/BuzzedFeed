@@ -1,0 +1,75 @@
+<head>
+  <style>
+    button {
+      background-color: #DB7705;
+      color: white;
+      font-weight: bold;
+    }
+    input {
+      border-style: solid;
+      border-width: 2px;
+      border-color: black;
+    }
+    ion-tabs {
+      background-color: #1a66ff;
+      color: white;
+    }
+    ion-footer-bar {
+      background-color: #1a66ff;
+    }
+    h3 {
+      text-align: center;
+      color: white;
+    }
+    .rate_number {
+      width: 50px;
+    }
+    span {
+      color: black;
+    }
+  </style>
+</head>
+
+<ion-view title="Drinks" id="page3">
+  <ion-content padding="true" class="has-header">
+    <ul style="list-style-type:disc">
+      	<li ng-repeat="recipe in drink">
+    		<span>{{recipe}}</span>
+    	</li>
+    </ul>
+
+    <input type="text" id="searchedDrink">
+
+    <button ng-click="searchDrink()"> Search </button>
+
+    <button ng-click="allFavDrink()"> Show Favorites </button>
+
+    <button ng-click="allDrink()"> Show All </button>
+
+    <br>
+
+    <input type="text" id="rateDrink">
+
+    <input type="number" id="rateScore" class = "rate_number">
+
+    <button ng-click="rate()"> Rate </button>
+
+    <br>
+
+    <input type="text" id="favDrink">
+
+    <button ng-click="faveDrink()"> Favorite </button>
+
+    <br>
+
+    <input type="text" id="unfavDrink">
+
+    <button ng-click="unfaveDrink()"> Unfavorite </button>
+
+
+    <!-- Need to prompt for amount as well -->
+
+    <!-- Search for drink, see ingredients -->
+
+  </ion-content>
+</ion-view>

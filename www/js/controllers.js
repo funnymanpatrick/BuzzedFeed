@@ -19,14 +19,14 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		for (i=0; i<$scope.all_alcohol.length; i++){
 			if($scope.all_alcohol[i].name.toUpperCase() == toSearch.toUpperCase()){
 					$scope.stock.push($scope.all_alcohol[i].name);
-					$scope.stock.push('ammount: ' + $scope.all_alcohol[i].ammount.toString());
+					$scope.stock.push('amount: ' + $scope.all_alcohol[i].ammount.toString());
 				}
 			}	
 
 		for (i=0; i<$scope.all_mixers.length; i++){
 			if($scope.all_mixers[i].name.toUpperCase() == toSearch.toUpperCase()){
 					$scope.stock.push($scope.all_mixers[i].name);
-					$scope.stock.push('ammount: ' + $scope.all_mixers[i].ammount.toString());
+					$scope.stock.push('amount: ' + $scope.all_mixers[i].ammount.toString());
 				}
 			}
 		if ($scope.stock.length === 0) {
