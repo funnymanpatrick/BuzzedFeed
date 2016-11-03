@@ -1,0 +1,17 @@
+<ion-view title="Stock" id="page2">
+  <ion-content padding="true" class="has-header">
+    <ul style="list-style-type:disc">
+    	<li ng-repeat="drink in stock">
+    		<span>{{drink}}</span>
+            <!-- Edit remaining amount -->
+            <!-- Delete drink -->
+    	</li>
+    </ul>
+
+    <input type="text" id="searchedAlcohol">
+
+    <button ng-click="searchAlcohol()"> Search </button>  
+    <!-- Need to prompt for amount as well -->
+
+  </ion-content>
+</ion-view>

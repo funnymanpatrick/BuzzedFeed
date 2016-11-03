@@ -1,0 +1,19 @@
+<ion-view title="Drinks" id="page3">
+  <ion-content padding="true" class="has-header">
+    <ul style="list-style-type:disc">
+      	<li ng-repeat="recipe in drink">
+    		<span>{{recipe}}</span>
+            <!-- Edit remaining amount -->
+            <!-- Delete drink -->
+    	</li>
+    </ul>
+
+    <input type="text" id="searchedDrink">
+
+    <button ng-click="searchDrink()"> Search </button>  
+    <!-- Need to prompt for amount as well -->
+
+    <!-- Search for drink, see ingredients -->
+
+  </ion-content>
+</ion-view>
