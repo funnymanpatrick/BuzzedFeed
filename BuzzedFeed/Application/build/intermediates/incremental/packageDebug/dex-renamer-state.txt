@@ -1,7 +1,0 @@
-#Tue Nov 01 23:33:35 EDT 2016
-base.0=E\:\\GitHub\\BuzzedFeed\\BuzzedFeed\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_d52ac001a3ecd17bd17f7c604b88671b29a07265
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=E\:\\GitHub\\BuzzedFeed\\BuzzedFeed\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_6dfeb73a3d1519269f7ab7eb5e870d5bd84ad719\\classes.dex
-base.1=E\:\\GitHub\\BuzzedFeed\\BuzzedFeed\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_6dfeb73a3d1519269f7ab7eb5e870d5bd84ad719
-file.0=E\:\\GitHub\\BuzzedFeed\\BuzzedFeed\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_d52ac001a3ecd17bd17f7c604b88671b29a07265\\classes.dex
