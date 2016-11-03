@@ -1,32 +1,3 @@
-var d = [
-			{name: 'Gin and Tonic', alcohol: ['Gin'], mixers: ['Tonic'], rating: 5.0},
-			{name: 'Dark and Stormy', alcohol: ['Rum'], mixers: ['Ginger Beer'], rating: 5.0},
-			{name: 'Rum and Coke', alcohol: ['Rum'], mixers: ['Cola'], rating: 5.0},
-			{name: 'Bloody Mary', alcohol: ['Vodka'], mixers: ['Tomato Juice'], rating: 5.0},
-			{name: 'Moscow Mule', alcohol: ['Vodka'], mixers: ['Ginger Beer', 'Lime Juice'], rating: 5.0},
-			{name: 'Screwdriver', alcohol: ['Vodka'], mixers: ['Orange Juice'], rating: 4.1},
-			{name: 'Long Island Iced Tea', alcohol: ['Gin', 'Tequila', 'Vodka', 'Rum'], mixers: ['Lemon Juice'], rating: 5.0}
-		];
-
-var a = [
-			{name: 'Vodka', ammount: 5},
-			{name: 'Rum', ammount: 2},
-			{name: 'Gin', ammount: 1},
-			{name: 'Tequila', ammount: 7},
-			{name: 'Whiskey', ammount: 0}
-		];
-
-var m = [
-			{name: 'Tonic Water', ammount: 4},
-			{name: 'Ginger Beer', ammount: 5},
-			{name: 'Cola', ammount: 5},
-			{name: 'Tomato Juice', ammount: 5},
-			{name: 'Orange Juice', ammount: 5},
-			{name: 'Red Bull', ammount: 5},
-			{name: 'Lemon Juice', ammount: 5},
-			{name: 'Lime Juice', ammount: 5}
-		];
-
 angular.module('app.controllers', [])
 
 
@@ -126,6 +97,48 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	$scope.all_mixers = m;
 
 	$scope.searchedDrink = '';
+
+	$scope.faveDrink = function(){
+		$scope.drink = [];
+		nam = document.getElementById("favDrink").value;
+		for (i=0; i<$scope.all_drinks.length; i++){
+			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
+				d[i].fav = 't';
+				$scope.drink.push('You favorited ' + nam);
+				return;
+			}
+		}
+		$scope.drink.push(nam + 'not found');
+	}
+
+	$scope.unfaveDrink = function(){
+		$scope.drink = [];
+		nam = document.getElementById("unfavDrink").value;
+		for (i=0; i<$scope.all_drinks.length; i++){
+			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
+				d[i].fav = 'f';
+				$scope.drink.push('You unfavorited ' + nam);
+				return;
+			}
+		}
+		$scope.drink.push(nam + 'not found');
+	}
+
+	$scope.allFavDrink = function(){
+		$scope.drink = [];
+		// console.log(d[0].favorite);
+		for (i=0; i<$scope.all_drinks.length; i++){
+			console.log(d[i].name);
+			console.log(d[i].favorite);
+			if(d[i].fav == 't'){
+				console.log('hey this shit is true');
+				$scope.drink.push(d[i].name);
+			}
+		}
+		if ($scope.drink.length === 0) {
+		$scope.drink.push('No Favorites');
+		}
+	}
 
 	$scope.rate = function(){
 		$scope.drink = [];
