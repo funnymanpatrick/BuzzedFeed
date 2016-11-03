@@ -27,12 +27,12 @@ var m = [
 			{name: 'Lime Juice', ammount: 5}
 		];
 
+
 angular.module('app.services', [])
 
 
 //TODO: Have ids for each so not keying by name
 //Hashmap?
-
 
 .factory('GetDrinks', [function() {
 	return {
