@@ -24,20 +24,26 @@
     .rate_number {
       width: 50px;
     }
+    span {
+      color: black;
+    }
   </style>
 </head>
 
 <ion-view title="Drinks" id="page3">
   <ion-content padding="true" class="has-header">
     <ul style="list-style-type:disc">
-      	<li ng-repeat="recipe in drink">
-    		<span>{{recipe}}</span>
-            <!-- Edit remaining amount -->
-            <!-- Delete drink -->
-    	</li>
+        <li ng-repeat="recipe in drink">
+    		  <span>{{recipe}}</span>
+    	 </li>
     </ul>
 
-    <input type="text" id="searchedDrink">
+    <!-- <input type="text" id="searchedDrink"> -->
+
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" id="searchedDrink">
+    </label>
 
     <button ng-click="searchDrink()"> Search </button>
 
@@ -47,28 +53,36 @@
 
     <br>
 
-    <input type="text" id="rateDrink">
+    <!-- <input type="text" id="rateDrink"> -->
 
-    <input type="number" id="rateScore" class = "rate_number">
+    <label class="item item-input" style="display:none" id="rate_label">
+      <i class="icon ion-star placeholder-icon"></i>
+      <input type="number" id="rateScore" class = "rate_number">
+    </label>
 
-    <button ng-click="rate()"> Rate </button>
-
-    <br>
-
-    <input type="text" id="favDrink">
-
-    <button ng-click="faveDrink()"> Favorite </button>
+    <button ng-click="rate()" style="display:none" id = "rate_btn"> Rate </button>
 
     <br>
 
-    <input type="text" id="unfavDrink">
+    <!-- <input type="text" id="favDrink"> -->
 
-    <button ng-click="unfaveDrink()"> Unfavorite </button>
+    <button ng-click="faveDrink()" id = "favorite_btn" style="display:none"> Favorite </button>
 
+    <br>
 
-    <!-- Need to prompt for amount as well -->
+    <!-- <input type="text" id="unfavDrink"> -->
 
-    <!-- Search for drink, see ingredients -->
+    <button ng-click="unfaveDrink()" id = "unfavorite_btn" style="display:none"> Unfavorite </button>
+
+    <br>
+
+    <button id = "details_btn" style="display:none" ng-click="getIngredients()"> Ingredients </button>
+
+    <ul>
+      <li ng-repeat="ingredient in ingredients">
+        <span>{{ingredient.name}} - {{ingredient.owns}}</span>
+      </li>
+    </ul>
 
   </ion-content>
 </ion-view>
