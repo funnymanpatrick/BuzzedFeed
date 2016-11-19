@@ -1,0 +1,60 @@
+<head>
+  <link rel="stylesheet" href="../css/standard.css">
+</head>
+
+<ion-view title="Drinks" id="page3">
+  <ion-content padding="true" class="has-header">
+    <ul style="list-style-type:disc">
+        <li ng-repeat="recipe in drink">
+    		  <span>{{recipe}}</span>
+    	 </li>
+    </ul>
+
+    <!-- <input type="text" id="searchedDrink"> -->
+
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Search" id="searchedDrink">
+    </label>
+
+    <button ng-click="searchDrink()"> Search </button>
+
+    <button ng-click="allFavDrink()"> Show Favorites </button>
+
+    <button ng-click="allDrink()"> Show All </button>
+
+    <br>
+
+    <!-- <input type="text" id="rateDrink"> -->
+
+    <label class="item item-input" style="display:none" id="rate_label">
+      <i class="icon ion-star placeholder-icon"></i>
+      <input type="number" id="rateScore" class = "rate_number">
+    </label>
+
+    <button ng-click="rate()" style="display:none" id = "rate_btn"> Rate </button>
+
+    <br>
+
+    <!-- <input type="text" id="favDrink"> -->
+
+    <button ng-click="faveDrink()" id = "favorite_btn" style="display:none"> Favorite </button>
+
+    <br>
+
+    <!-- <input type="text" id="unfavDrink"> -->
+
+    <button ng-click="unfaveDrink()" id = "unfavorite_btn" style="display:none"> Unfavorite </button>
+
+    <br>
+
+    <button id = "details_btn" style="display:none" ng-click="getIngredients()"> Ingredients </button>
+
+    <ul>
+      <li ng-repeat="ingredient in ingredients">
+        <span>{{ingredient.name}} - {{ingredient.owns}}</span>
+      </li>
+    </ul>
+
+  </ion-content>
+</ion-view>

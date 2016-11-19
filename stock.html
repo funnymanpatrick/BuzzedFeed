@@ -1,0 +1,42 @@
+<head>
+  <link rel="stylesheet" href="../css/standard.css">
+</head>
+
+<ion-view title="Stock" id="page2">
+  <ion-content padding="true" class="has-header">
+    <ul style="list-style-type:disc">
+    	<li ng-repeat="drink in stock">
+    		<span>{{drink}}</span>
+            <!-- Edit remaining amount -->
+            <!-- Delete drink -->
+    	</li>
+    </ul>
+
+    <input type="text" id="searchedAlcohol">
+
+    <button ng-click="searchAlcohol()"> Search </button>
+
+    <br>
+
+    <input type="text" id="addedAlcohol">
+
+    <input type="number" id="addedAAmmount" class = "amount_label">
+
+    <button ng-click="addAlcohol()"> Add Booze </button>
+
+    <br>
+
+    <input type="text" id="addedMixer">
+
+    <input type="number" id="addedMAmmount" class = "amount_label">
+
+    <button ng-click="addMixer()"> Add NAB </button>
+
+    <br>
+
+    <input type="text" id="removedAlcohol">
+
+    <button ng-click="removeAlcohol()"> Remove </button>
+
+  </ion-content>
+</ion-view>
