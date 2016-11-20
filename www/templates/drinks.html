@@ -2,17 +2,13 @@
   <link rel="stylesheet" href="../css/standard.css">
 </head>
 
-<ion-view title="Drinks" id="page3">
+<ion-view title="BuzzedFeed" id="page3">
   <ion-content padding="true" class="has-header">
     <!-- <ul style="list-style-type:disc">
         <li ng-repeat="recipe in drink">
     		  <span>{{recipe}}</span>
     	 </li>
     </ul> -->
-
-    <div>Drink: {{drink}}</div>
-    <div>Rating: {{rating}}</div>
-    <div>Favorited: {{favorited}}</div>
 
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
@@ -27,24 +23,40 @@
 
     <br>
 
+    <div id="drink_label" style="display:none">Drink: {{drink}}</div>
+
+    <br>
+
     <!-- <input type="text" id="rateDrink"> -->
 
-    <label class="item item-input" style="display:none" id="rate_label">
+    <!-- <label class="item item-input" style="display:none" id="rate_label">
       <i class="icon ion-star placeholder-icon"></i>
       <input type="number" id="rateScore" class = "rate_number">
-    </label>
+    </label> -->
 
-    <button ng-click="rate()" style="display:none" id = "rate_btn"> Rate </button>
+    <span id="rate_btn" style="display:none">
+    <span ng-repeat="num in [1,2,3,4,5]">
+      <a ng-click="rate(num)"> 
+        <span ng-if="num>rating">
+          <i class="icon ion-ios-star-outline placeholder-icon"></i>
+        </span>
+        <span ng-if="num<=rating">
+          <i class="icon ion-ios-star placeholder-icon"></i>
+        </span>
+      </a>
+    </span>
+    </span>
+
+    
+    <!-- <button ng-click="rate()" style="display:none" id = "rate_btn"> Rate </button> -->
+
+
 
     <br>
 
-    <!-- <input type="text" id="favDrink"> -->
+    <div id="favorite_label" style="display:none">Favorited: {{favorited}}</div>
 
     <button ng-click="faveDrink()" id = "favorite_btn" style="display:none"> Favorite </button>
-
-    <br>
-
-    <!-- <input type="text" id="unfavDrink"> -->
 
     <button ng-click="unfaveDrink()" id = "unfavorite_btn" style="display:none"> Unfavorite </button>
 
