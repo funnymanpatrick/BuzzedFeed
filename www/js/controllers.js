@@ -90,7 +90,12 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
    
 .controller('drinksCtrl', ['$scope', '$stateParams', 'GetDrinks', 'GetAlcohol', 'GetMixers',
 function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
-	$scope.drink = [];
+	//Text to be read by Angular
+	$scope.drink = '';
+	$scope.rating = '';
+	$scope.favorited = '';
+
+	$scope.drink_list = [];
 
 	$scope.all_drinks = d;
 	$scope.all_alcohol = a;
@@ -100,72 +105,82 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 
 	$scope.ingredients = [];
 
+	$scope.hideDisplay = function(){
+		document.getElementById("rate_label").style.display="none";
+		document.getElementById("rate_btn").style.display="none";
+		document.getElementById("favorite_btn").style.display="none";
+		document.getElementById("unfavorite_btn").style.display="none";
+		document.getElementById("details_btn").style.display="none";
+		$scope.drink_list = [];
+		$scope.ingredients = [];
+	}
+
+	$scope.showDisplay = function(){
+		document.getElementById("rate_label").style.display="block";
+		document.getElementById("rate_btn").style.display="inline";
+		document.getElementById("favorite_btn").style.display="inline";
+		document.getElementById("unfavorite_btn").style.display="inline";
+		document.getElementById("details_btn").style.display="inline";
+		$scope.drink_list = [];
+		$scope.ingredients = [];
+	}
+
 	$scope.faveDrink = function(){
-		$scope.drink = [];
+		// $scope.drink = [];
 		// nam = document.getElementById("favDrink").value;
 
 		nam = $scope.searchedDrink;
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].fav = 't';
-				$scope.drink.push('You favorited ' + nam);
+				//$scope.drink.push('You favorited ' + nam);
+				$scope.favorited = 'T';
 				return;
 			}
 		}
-		$scope.drink.push(nam + ' not found');
+		// $scope.drink.push(nam + ' not found');
 	}
 
 	$scope.unfaveDrink = function(){
-		$scope.drink = [];
+		// $scope.drink = [];
 		// nam = document.getElementById("unfavDrink").value;
 		nam = $scope.searchedDrink;
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].fav = 'f';
-				$scope.drink.push('You unfavorited ' + nam);
+				//$scope.drink.push('You unfavorited ' + nam);
+				$scope.favorited = 'F';
 				return;
 			}
 		}
-		$scope.drink.push(nam + 'not found');
+		// $scope.drink.push(nam + 'not found');
 	}
 
 	$scope.allFavDrink = function(){
-		$scope.drink = [];
-		$scope.ingredients = [];
+		$scope.hideDisplay();
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if(d[i].fav == 't'){
 				console.log('hey this shit is true');
-				$scope.drink.push(d[i].name);
+				$scope.drink_list.push(d[i].name);
 			}
 		}
-		if ($scope.drink.length === 0) {
-			$scope.drink.push('No Favorites');
+		if ($scope.drink_list.length === 0) {
+			$scope.drink_list.push('No Favorites');
 		}
-		document.getElementById("rate_label").style.display="none";
-		document.getElementById("rate_btn").style.display="none";
-		document.getElementById("favorite_btn").style.display="none";
-		document.getElementById("unfavorite_btn").style.display="none";
-		document.getElementById("details_btn").style.display="none";
 	}
 
 	$scope.allDrink = function(){
-		$scope.drink = [];
-		$scope.ingredients = [];
+		$scope.hideDisplay();
 		for (i=0; i<$scope.all_drinks.length; i++){
-			$scope.drink.push(d[i].name);
+			$scope.drink_list.push(d[i].name);
 		}
 		if ($scope.drink.length === 0) {
-			$scope.drink.push('No Drinks');
+			$scope.drink_list.push('No Drinks');
 		}
-		document.getElementById("rate_label").style.display="none";
-		document.getElementById("rate_btn").style.display="none";
-		document.getElementById("favorite_btn").style.display="none";
-		document.getElementById("unfavorite_btn").style.display="none";
-		document.getElementById("details_btn").style.display="none";
 	}
 
 	$scope.rate = function(){
-		$scope.drink = [];
+		// $scope.drink = [];
 		// nam = document.getElementById("rateDrink").value;
 		nam = $scope.searchedDrink;
 		rat = document.getElementById("rateScore").value;
@@ -175,42 +190,39 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].rating = parseFloat(rat);
-				$scope.drink.push('You rated ' + nam + ' a ' + parseFloat(rat));
+				$scope.rating = parseFloat(rat);
+				// $scope.drink.push('You rated ' + nam + ' a ' + parseFloat(rat));
 				return;
 			}
 		}
-		$scope.drink.push(nam + 'not found');
+		// $scope.drink.push(nam + 'not found');
 	}
 
 	$scope.searchDrink = function(){
-		$scope.drink = [];
-		$scope.ingredients = [];
 		toSearch = document.getElementById("searchedDrink").value;
 
 		$scope.searchedDrink = toSearch;
 
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if($scope.all_drinks[i].name.toUpperCase() == toSearch.toUpperCase()){
-				$scope.drink.push($scope.all_drinks[i].name);
-				$scope.drink.push('Rating: ' + $scope.all_drinks[i].rating.toString());
-				$scope.drink.push('Favorited: ' + $scope.all_drinks[i].fav.toString().toUpperCase()); 
+				// $scope.drink.push($scope.all_drinks[i].name);
+				// $scope.drink.push('Rating: ' + $scope.all_drinks[i].rating.toString());
+				// $scope.drink.push('Favorited: ' + $scope.all_drinks[i].fav.toString().toUpperCase()); 
+				$scope.drink = $scope.all_drinks[i].name;
+				$scope.rating = $scope.all_drinks[i].rating.toString();
+				$scope.favorited = $scope.all_drinks[i].fav.toString().toUpperCase();
 			}
 		}
 
 		if ($scope.drink.length === 0) {
-			$scope.drink.push(toSearch + ' was not found');
-			document.getElementById("rate_label").style.display="none";
-			document.getElementById("rate_btn").style.display="none";
-			document.getElementById("favorite_btn").style.display="none";
-			document.getElementById("unfavorite_btn").style.display="none";
-			document.getElementById("details_btn").style.display="none";
+			// $scope.drink.push(toSearch + ' was not found');
+			$scope.drink = 'Unknown';
+			$scope.rating = '';
+			$scope.favorited = '';
+			$scope.hideDisplay()
 		}
 		else {
-			document.getElementById("rate_label").style.display="block";
-			document.getElementById("rate_btn").style.display="inline";
-			document.getElementById("favorite_btn").style.display="inline";
-			document.getElementById("unfavorite_btn").style.display="inline";
-			document.getElementById("details_btn").style.display="inline";
+			$scope.showDisplay();
 		}
 	};
 
