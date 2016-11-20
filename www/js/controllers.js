@@ -106,54 +106,55 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	$scope.ingredients = [];
 
 	$scope.hideDisplay = function(){
-		document.getElementById("rate_label").style.display="none";
 		document.getElementById("rate_btn").style.display="none";
 		document.getElementById("favorite_btn").style.display="none";
 		document.getElementById("unfavorite_btn").style.display="none";
 		document.getElementById("details_btn").style.display="none";
+		document.getElementById("drink_label").style.display="none";
+		document.getElementById("favorite_label").style.display="none";
 		$scope.drink_list = [];
 		$scope.ingredients = [];
 	}
 
 	$scope.showDisplay = function(){
-		document.getElementById("rate_label").style.display="block";
 		document.getElementById("rate_btn").style.display="inline";
-		document.getElementById("favorite_btn").style.display="inline";
-		document.getElementById("unfavorite_btn").style.display="inline";
+		if($scope.favorited=='F'){
+			document.getElementById("favorite_btn").style.display="inline";
+		}
+		else{
+			document.getElementById("unfavorite_btn").style.display="inline";
+		}
 		document.getElementById("details_btn").style.display="inline";
+		document.getElementById("drink_label").style.display="inline";
+		document.getElementById("favorite_label").style.display="inline";
 		$scope.drink_list = [];
 		$scope.ingredients = [];
 	}
 
 	$scope.faveDrink = function(){
-		// $scope.drink = [];
-		// nam = document.getElementById("favDrink").value;
-
 		nam = $scope.searchedDrink;
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].fav = 't';
-				//$scope.drink.push('You favorited ' + nam);
 				$scope.favorited = 'T';
+				document.getElementById("favorite_btn").style.display="none";
+				document.getElementById("unfavorite_btn").style.display="inline";
 				return;
 			}
 		}
-		// $scope.drink.push(nam + ' not found');
 	}
 
 	$scope.unfaveDrink = function(){
-		// $scope.drink = [];
-		// nam = document.getElementById("unfavDrink").value;
 		nam = $scope.searchedDrink;
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].fav = 'f';
-				//$scope.drink.push('You unfavorited ' + nam);
 				$scope.favorited = 'F';
+				document.getElementById("favorite_btn").style.display="inline";
+				document.getElementById("unfavorite_btn").style.display="none";
 				return;
 			}
 		}
-		// $scope.drink.push(nam + 'not found');
 	}
 
 	$scope.allFavDrink = function(){
@@ -179,11 +180,11 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	}
 
-	$scope.rate = function(){
+	$scope.rate = function(rat){
 		// $scope.drink = [];
 		// nam = document.getElementById("rateDrink").value;
 		nam = $scope.searchedDrink;
-		rat = document.getElementById("rateScore").value;
+		// rat = document.getElementById("rateScore").value;
 
 		console.log(name, rat);
 
