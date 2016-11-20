@@ -10,7 +10,7 @@
       border-color: black;
     }
     ion-tabs {
-      background-color: #1a66ff;
+      background-color: #42f448;
       color: white;
     }
     ion-footer-bar {
@@ -20,6 +20,22 @@
       text-align: center;
       color: white;
     }
+    h2 {
+      text-align: center;
+      color: green;
+    }
+    h4 {
+      text-align: center;
+      color: red;
+    }
+    h5 {
+      text-align: center;
+      color: orange;
+    }
+    h1 {
+      text-align: center;
+      color: yellow;
+    }
     .rate_number {
       width: 50px;
     }
@@ -28,5 +44,8 @@
     }
     div {
       color: black;
+    }
+    .test-class {
+      background-color: #f47442;
     }
 </style>
