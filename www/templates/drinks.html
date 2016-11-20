@@ -1,44 +1,18 @@
 <head>
-  <style>
-    button {
-      background-color: #DB7705;
-      color: white;
-      font-weight: bold;
-    }
-    input {
-      border-style: solid;
-      border-width: 2px;
-      border-color: black;
-    }
-    ion-tabs {
-      background-color: #1a66ff;
-      color: white;
-    }
-    ion-footer-bar {
-      background-color: #1a66ff;
-    }
-    h3 {
-      text-align: center;
-      color: white;
-    }
-    .rate_number {
-      width: 50px;
-    }
-    span {
-      color: black;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/standard.css">
 </head>
 
 <ion-view title="Drinks" id="page3">
   <ion-content padding="true" class="has-header">
-    <ul style="list-style-type:disc">
+    <!-- <ul style="list-style-type:disc">
         <li ng-repeat="recipe in drink">
     		  <span>{{recipe}}</span>
     	 </li>
-    </ul>
+    </ul> -->
 
-    <!-- <input type="text" id="searchedDrink"> -->
+    <div>Drink: {{drink}}</div>
+    <div>Rating: {{rating}}</div>
+    <div>Favorited: {{favorited}}</div>
 
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
@@ -82,6 +56,12 @@
       <li ng-repeat="ingredient in ingredients">
         <span>{{ingredient.name}} - {{ingredient.owns}}</span>
       </li>
+    </ul>
+
+    <ul>
+      <li ng-repeat="displayed_drink in drink_list">
+        <span>{{displayed_drink}}</span>
+      <li>
     </ul>
 
   </ion-content>
