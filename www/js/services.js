@@ -1,4 +1,4 @@
-var d = [
+namevar d = [
 			{name: 'Gin and Tonic', alcohol: ['Gin'], mixers: ['Tonic'], rating: 5.0, fav: 't'},
 			{name: 'Dark and Stormy', alcohol: ['Rum'], mixers: ['Ginger Beer'], rating: 5.0, fav: 'f'},
 			{name: 'Rum and Coke', alcohol: ['Rum'], mixers: ['Cola'], rating: 5.0, fav: 'f'},
