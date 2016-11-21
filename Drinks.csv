@@ -1,0 +1,50 @@
+drink_id,Name,Alcohol,Mixers,Rating
+1, Gin and Tonic,Gin,Tonic,5
+2, Dark and Stormy,Rum,Ginger Beer,4.3
+3, Rum an Coke,Rum,Cola,4.1
+4, Bloody Mary,Vodka,Tomato Juice,3.5
+5, Moscow Mule,Vodka,Ginger Beer,5
+6, Screwdriver,Vodka,Orange Juice,2
+7, Long Island Iced Tea,Gin;Rum;Tequila;Vodka,Lemon Juice,4
+8, Woo Woo,Peach Schnapps;Vodka,Cranberry Juice,5
+9, Sex on the Beach,Peach Schnapps;Vodka,Cranberry Juice;Grapefruit Juice,3
+10, Miami Vice,Rum,Pina Colada Mix;Daiquiri Mix,4
+11, Sperm,Tequila;Vodka,Cream,5
+12, Blue Lagoon,Blue Curacao Liqueur;Vodka,Lemonade,5
+13, Blow Job,Coffee Liqueur;Irish Cream,Whipped Cream,5
+14, Jungle Juice,Everclear;Vodka,Fruit Punch;Lemonade;Orange Juice,5
+15, Dirty Shirley,Vodka,Grenadine;Sprite,4.2
+16, Hurricane,Amaretto;Gin;Rum;Vodka,Grapefruit Juice;Grenadine;Orange Juice,4.4
+17, Tequila Sunrise,Tequila,Granadine;Orange Juice,5
+18, Mojito,Rum,Club Soda;Lemon Juice;Mint,4.7
+19, Royal Flush,Peach Schnapps;Whiskey,Cranberry Juice;Raspberry Liqueur,3.6
+20, Dirty Girl Scout,Coffee Liqueur;Creme de Menthe;Irish Cream;Vodka,Whipped Cream,2.6
+21, White Russian,Coffee Liqueur;Vodka,Cream,4.8
+22, Seabreeze,Vodka,Cranberry Juice;Grapefruit Juice,4.9
+23, Margarita,Tequila;Orange Liqueur,Lime Juice;Salt,5
+24, Pina Colada,Rum,Coconut Milk;Pineapple Juice,4
+25, Whiskey Sour,Whiskey,Sweet and Sour Mix,4.6
+26, Old Fashioned,Whiskey,Bitters;Sugar,4.4
+27,Tom Collins,Gin,Lemon Juice;Soda Water;Sugar,3.2
+28, Daiquiri,Rum,Lime Juice;Simple Syrup,4.1
+29, Cosmopolitan,Orange Liqueur;Vodka,Cranberry Juice;Lime Juice,4
+30, Mad Hatter,Peach Schnapps;Vodka,Cola;Lemonade,5
+31, Alabama Slammer,Amaretto;Gin;Peach Liqueur,Orange Juice;Sweet and Sour Mix,4.5
+32, Jagar Bomb,Herbal Liqueur,Energy Drink,4.7
+33, Trashcan,Gin;Blue Curacao Liqueur;Rum;Triple Sec;Vodka,Energy Drink,4.8
+34, Zombie,Brandy;Rum,Apple Juice;Lime Juice;Orange Juice,4.4
+35, Mojo,Brandy;Rum,Apple Juice;Beer;Club Soda,4.1
+36, Ice Pick,Vodka,Iced Tea;Lemon Juice,2.4
+37, Mudslide,Coffee Liqueur;Irish Cream;Vodka,Chocholate Syrup;Cream,3
+38, Vodka Martini,Vodka,Vermouth,3.6
+39, Highball,Scotch,Club Soda,3.8
+40, Manhatten,Whiskey,Bitters;Vermouth,4.3
+41, Sidecar,Cognac;Triple Sec,Lemon Juice,3.8
+42, Irish Coffee,Irish Cream;Whiskey,Coffee;Cream,3.9
+43, Negroni,Campari;Gin,Vermouth,4
+44, Vodka Cranberry,Vodka,Cranberry Juice,4.7
+45, Mint Julep,Whiskey,Club Soda;Mint;Sugar,4.8
+46, Mai Tai,Blue Curacao Liqueur;Rum,Lime Juice;Simple Syrup,5
+47, Planter's Punch,Rum,Grenadine;Lime Juice;Lemon Juice;Simple Syrup,5
+48, Boston Tea Party,Amaretto;Coffee Liqueur;Gin;Orange Liqueur;Rum;Vodka,Cola;Sweet and Sour Mix,5
+49, Blue Diablo,Blue Curacao Liqueur;Tequila,Lemon Juice;Lime Juice,4.8
