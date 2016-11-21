@@ -20,6 +20,10 @@
       text-align: center;
       color: black;
     }
+    h5 {
+      text-align: center;
+      color: black;
+    }
     .rate_number {
       width: 50px;
     }
@@ -48,6 +52,15 @@
       text-align: center;
     }
     #ingredients_block{
+      text-align: center;
+    }
+    #set_ingredient_block{
+      text-align: center;
+    }
+    #my_stock{
+      text-align: center;
+    }
+    #all_ingredients{
       text-align: center;
     }
 </style>
