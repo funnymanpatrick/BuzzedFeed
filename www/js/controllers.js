@@ -5,85 +5,65 @@ angular.module('app.controllers', [])
   
 .controller('stockCtrl', ['$scope', '$stateParams', 'GetDrinks', 'GetAlcohol', 'GetMixers',
 function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
-	$scope.stock = [];
-
 	$scope.all_drinks = d;
 	$scope.all_alcohol = a;
 	$scope.all_mixers = m;
 
-	$scope.searchedAlcohol = '';
+	$scope.currentIngredient = {};
 
-	$scope.searchAlcohol = function(){
-		toSearch = document.getElementById("searchedAlcohol").value;
-		$scope.stock = [];
+	$scope.hideDisplay = function(){
+		document.getElementById("ingredient_label").style.display="none";
+		document.getElementById("set_ingredient_block").style.display="none";
+		document.getElementById("all_ingredients").style.display="none";
+		document.getElementById("my_stock").style.display="none";
+	}
+
+	$scope.showDisplay = function(){
+		document.getElementById("ingredient_label").style.display="block";
+		document.getElementById("set_ingredient_block").style.display="block";
+	}
+
+	$scope.getStock = function(){
+		$scope.hideDisplay();
+		document.getElementById("my_stock").style.display="block";
+	}
+
+	$scope.listAllIngredients = function(){
+		$scope.hideDisplay();
+		document.getElementById("all_ingredients").style.display="block";
+	}
+
+	$scope.searchIngredient = function(){
+		$scope.hideDisplay();
+		toSearch = document.getElementById('searchedIngredient').value;
 		for (i=0; i<$scope.all_alcohol.length; i++){
 			if($scope.all_alcohol[i].name.toUpperCase() == toSearch.toUpperCase()){
-					$scope.stock.push($scope.all_alcohol[i].name);
-					$scope.stock.push('amount: ' + $scope.all_alcohol[i].ammount.toString());
-				}
-			}	
+				$scope.currentIngredient = $scope.all_alcohol[i];
+				$scope.showDisplay();
+				return;
+			}
+		}	
 
 		for (i=0; i<$scope.all_mixers.length; i++){
 			if($scope.all_mixers[i].name.toUpperCase() == toSearch.toUpperCase()){
-					$scope.stock.push($scope.all_mixers[i].name);
-					$scope.stock.push('amount: ' + $scope.all_mixers[i].ammount.toString());
-				}
+				$scope.currentIngredient = $scope.all_mixers[i];
+				$scope.showDisplay();
+				return;
 			}
-		if ($scope.stock.length === 0) {
-			$scope.stock.push(toSearch + ' was not found');
 		}
+
+		$scope.currentIngredient = {name: 'Not Found', ammount: 'N/A'};
+		$scope.showDisplay();
 	};
 
-	$scope.addAlcohol = function(){
-		$scope.stock = [];
-		nam = document.getElementById("addedAlcohol").value;
-		amm = document.getElementById("addedAAmmount").value;
+	$scope.setIngredient = function(){
+		amm = document.getElementById("setIngredient").value;
 
-		for (i=0; i<$scope.all_alcohol.length; i++){
-			if($scope.all_alcohol[i].name.toUpperCase() == nam.toUpperCase()){
-					a[i].ammount = parseFloat(a[i].ammount) + parseFloat(amm);
-					$scope.stock.push('Added ' + amm + ' of ' + nam + ' there is now ' + a[i].ammount);
-					return;
-				}
-			}	
-		a.push({name: nam, ammount: amm});
-		$scope.stock.push('Added ' + amm + ' of ' + nam);
+		$scope.currentIngredient.ammount = amm;
 	}
 
-	$scope.addMixer = function(){
-		$scope.stock = [];
-		nam = document.getElementById("addedMixer").value;
-		amm = document.getElementById("addedMAmmount").value;
-		for (i=0; i<$scope.all_mixers.length; i++){
-			if($scope.all_mixers[i].name.toUpperCase() == nam.toUpperCase()){
-					m[i].ammount = parseFloat(m[i].ammount) + parseFloat(amm);
-					$scope.stock.push('Added ' + amm + ' of ' + nam + ' there is now ' + m[i].ammount);
-					return;
-				}
-			}	
-		a.push({name: nam, ammount: amm});
-		$scope.stock.push('Added ' + amm + ' of ' + nam);
-	}
-
-	$scope.removeAlcohol = function(){
-		toSearch = document.getElementById("removedAlcohol").value;
-		$scope.stock = [];
-		for (i=0; i<$scope.all_alcohol.length; i++){
-			if($scope.all_alcohol[i].name.toUpperCase() == toSearch.toUpperCase()){
-					$scope.stock.push($scope.all_alcohol[i].name + ' was removed');
-					a.splice(i,1);
-				}
-			}	
-
-		for (i=0; i<$scope.all_mixers.length; i++){
-			if($scope.all_mixers[i].name.toUpperCase() == toSearch.toUpperCase()){
-					$scope.stock.push($scope.all_mixers[i].name + ' was removed');
-					m.splice(i,1);
-				}
-			}
-		if ($scope.stock.length === 0) {
-			$scope.stock.push(toSearch + ' was not found');
-		}
+	$scope.removeIngredient = function(){
+		$scope.currentIngredient.ammount = 0;
 	}
 
 }])
@@ -268,34 +248,32 @@ function ($scope, $stateParams) {
 }])
 
 .controller('loginCtrl', ['$scope', '$stateParams', '$state',
-function ($scope, $stateParams, $state) {
-	$scope.login = function(){
-		let auth = false;
+ function ($scope, $stateParams, $state) {
+ 	$scope.login = function(){
+ 		let auth = false;
 		let usr = document.getElementById("userr").value;
 		let pas = document.getElementById("passs").value;
-		if (usr.toUpperCase() == user.toUpperCase() && md5(pas) == pass) auth = true;
-		if (auth) $state.go('tabsController.stock');
-		else console.log("Login Failed");
-	}
-
-	$scope.register = function(){
-    	$state.go('registerSurvey');
-	}
-
-
-}])
-
+ 		if (usr.toUpperCase() == user.toUpperCase() && md5(pas) == pass) auth = true;
+ 		if (auth) $state.go('tabsController.stock');
+ 		else console.log("Login Failed");
+ 	}
+ 
+ 	$scope.register = function(){
+     	$state.go('registerSurvey');
+ 	}
+ 
+ 
+ }])
+ 
 .controller('registerSurveyCtrl', ['$scope', '$stateParams', '$state',
-function ($scope, $stateParams, $state) {
-		$scope.register = function(){
-		let auth = false;
-		let usr = document.getElementById("userrr").value;
-		let pas = document.getElementById("passss").value;
-		if (usr != "" && pas != "") auth = true;
-    	if (auth) $state.go('tabsController.stock');
-    	else console.log("Registration Failed");
-	}
-
-
-}])
+	function ($scope, $stateParams, $state) {
+ 		$scope.register = function(){
+ 		let auth = false;
+ 		let usr = document.getElementById("userrr").value;
+ 		let pas = document.getElementById("passss").value;
+ 		if (usr != "" && pas != "") auth = true;
+     	if (auth) $state.go('tabsController.stock');
+     	else console.log("Registration Failed");
+ 		}
+ }])
     
