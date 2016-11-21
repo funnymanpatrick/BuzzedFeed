@@ -1,18 +1,20 @@
 angular.module('app.controllers', [])
 
-//need to seperate these into different controller files
 
-  
+// This controller works on the 'Stock' tab. It gets all drinks, alcohol and mixers,
+// and acts as an intermediary between the user ingredient inputs and the database.
 .controller('stockCtrl', ['$scope', '$stateParams', 'GetDrinks', 'GetAlcohol', 'GetMixers',
 function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
-	$scope.all_drinks = d;
+	// Gets all drinks, alcohol and mixers
+  $scope.all_drinks = d;
 	$scope.all_alcohol = a;
 	$scope.all_mixers = m;
 
+  // Pulls in database from a json file
 	var xmlhttp = new XMLHttpRequest();
-var url = "data.json";
+  var url = "data.json";
 
-xmlhttp.onreadystatechange = function() {
+  xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var myArr = JSON.parse(this.responseText);
         consol.log(myArr);
@@ -20,13 +22,15 @@ xmlhttp.onreadystatechange = function() {
         a = myArr.a;
         m = myArr.m;
         console.log("Loaded Database");
-}
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+    }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
 
+  // Stores the current ingredient that the user has searched for
 	$scope.currentIngredient = {};
 
+  // Hides all display elements
 	$scope.hideDisplay = function(){
 		document.getElementById("ingredient_label").style.display="none";
 		document.getElementById("set_ingredient_block").style.display="none";
@@ -34,24 +38,35 @@ xmlhttp.send();
 		document.getElementById("my_stock").style.display="none";
 	}
 
+  // Shows display elements after a user has succesfully searched for an ingredient
 	$scope.showDisplay = function(){
 		document.getElementById("ingredient_label").style.display="block";
 		document.getElementById("set_ingredient_block").style.display="block";
 	}
 
+  // Displays the users personal stock
+  // Activated on 'My Stock' button press
 	$scope.getStock = function(){
 		$scope.hideDisplay();
+    // Simply sets the 'my_stock' element to be displayed. All searching
+    // through user data is handled by Angular directives in the template
 		document.getElementById("my_stock").style.display="block";
 	}
 
+  // Displays all possible ingredients
+  // Activated on 'List All Ingredients' button press
 	$scope.listAllIngredients = function(){
 		$scope.hideDisplay();
 		document.getElementById("all_ingredients").style.display="block";
 	}
 
+  // Takes the test from the search bar and attempts to find the searched ingredient
+  // Activated on 'Search' button press
 	$scope.searchIngredient = function(){
 		$scope.hideDisplay();
 		toSearch = document.getElementById('searchedIngredient').value;
+    // Searches through all alcohol in the database
+    // If found, updates and shows the display elements
 		for (i=0; i<$scope.all_alcohol.length; i++){
 			if($scope.all_alcohol[i].name.toUpperCase() == toSearch.toUpperCase()){
 				$scope.currentIngredient = $scope.all_alcohol[i];
@@ -60,6 +75,8 @@ xmlhttp.send();
 			}
 		}	
 
+    // Searches through all mixers in the database
+    // If found, updates and shows the display elements
 		for (i=0; i<$scope.all_mixers.length; i++){
 			if($scope.all_mixers[i].name.toUpperCase() == toSearch.toUpperCase()){
 				$scope.currentIngredient = $scope.all_mixers[i];
@@ -68,16 +85,20 @@ xmlhttp.send();
 			}
 		}
 
+    // If user input did not match anything in database, displays 'Not Found'
 		$scope.currentIngredient = {name: 'Not Found', ammount: 'N/A'};
 		$scope.showDisplay();
 	};
 
+  // Sets the currently entered amount for the currently searched ingredient
+  // Activated on 'Set' button press
 	$scope.setIngredient = function(){
 		amm = document.getElementById("setIngredient").value;
-
 		$scope.currentIngredient.ammount = amm;
 	}
 
+  // Removes the currently searched ingredient from the user stock
+  // Activated on 'Finished!' button press
 	$scope.removeIngredient = function(){
 		$scope.currentIngredient.ammount = 0;
 	}
