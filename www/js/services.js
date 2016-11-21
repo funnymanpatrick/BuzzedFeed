@@ -26,12 +26,14 @@ var m = [
 			{name: 'Lemon Juice', ammount: 5},
 			{name: 'Lime Juice', ammount: 5}
 		];
-
+//Loads database of drinks, alchohols, and mixers
 d = datas.d;
 a = datas.a;
 m = datas.m;
 
+//login info
 var user = "Dirty Mike";
+//password stored as an MD5 hash
 var pass = "7cf2db5ec261a0fa27a502d3196a6f60";
 
 

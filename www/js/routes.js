@@ -58,6 +58,7 @@ angular.module('app.routes', [])
     controller: 'registerSurveyCtrl'
   })
 
+//Sets landing page
 $urlRouterProvider.otherwise('page5')
 
   
