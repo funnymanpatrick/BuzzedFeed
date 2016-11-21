@@ -270,9 +270,9 @@ function ($scope, $stateParams) {
 .controller('loginCtrl', ['$scope', '$stateParams', '$state',
 function ($scope, $stateParams, $state) {
 	$scope.login = function(){
-		var auth = false;
-		var usr = document.getElementById("userr").value;
-		var pas = document.getElementById("passs").value;
+		let auth = false;
+		let usr = document.getElementById("userr").value;
+		let pas = document.getElementById("passs").value;
 		if (usr.toUpperCase() == user.toUpperCase() && md5(pas) == pass) auth = true;
 		if (auth) $state.go('tabsController.stock');
 		else console.log("Login Failed");
@@ -285,8 +285,16 @@ function ($scope, $stateParams, $state) {
 
 }])
 
-.controller('registerSurveyCtrl', ['$scope', '$stateParams',
-function ($scope, $stateParams) {
+.controller('registerSurveyCtrl', ['$scope', '$stateParams', '$state',
+function ($scope, $stateParams, $state) {
+		$scope.register = function(){
+		let auth = false;
+		let usr = document.getElementById("userrr").value;
+		let pas = document.getElementById("passss").value;
+		if (usr != "" && pas != "") auth = true;
+    	if (auth) $state.go('tabsController.stock');
+    	else console.log("Registration Failed");
+	}
 
 
 }])
