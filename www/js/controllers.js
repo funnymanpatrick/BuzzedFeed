@@ -117,16 +117,16 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	}
 
 	$scope.showDisplay = function(){
-		document.getElementById("rate_btn").style.display="inline";
+		document.getElementById("rate_btn").style.display="block";
 		if($scope.favorited=='F'){
-			document.getElementById("favorite_btn").style.display="inline";
+			document.getElementById("favorite_btn").style.display="block";
 		}
 		else{
-			document.getElementById("unfavorite_btn").style.display="inline";
+			document.getElementById("unfavorite_btn").style.display="block";
 		}
-		document.getElementById("details_btn").style.display="inline";
+		document.getElementById("details_btn").style.display="block";
 		document.getElementById("drink_label").style.display="inline";
-		document.getElementById("favorite_label").style.display="inline";
+		document.getElementById("favorite_label").style.display="block";
 		$scope.drink_list = [];
 		$scope.ingredients = [];
 	}
@@ -138,7 +138,7 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 				d[i].fav = 't';
 				$scope.favorited = 'T';
 				document.getElementById("favorite_btn").style.display="none";
-				document.getElementById("unfavorite_btn").style.display="inline";
+				document.getElementById("unfavorite_btn").style.display="block";
 				return;
 			}
 		}
@@ -150,7 +150,7 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].fav = 'f';
 				$scope.favorited = 'F';
-				document.getElementById("favorite_btn").style.display="inline";
+				document.getElementById("favorite_btn").style.display="block";
 				document.getElementById("unfavorite_btn").style.display="none";
 				return;
 			}

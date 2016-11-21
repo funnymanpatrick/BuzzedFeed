@@ -16,25 +16,9 @@
     ion-footer-bar {
       background-color: #1a66ff;
     }
-    h3 {
-      text-align: center;
-      color: white;
-    }
-    h2 {
-      text-align: center;
-      color: green;
-    }
     h4 {
       text-align: center;
-      color: red;
-    }
-    h5 {
-      text-align: center;
-      color: orange;
-    }
-    h1 {
-      text-align: center;
-      color: yellow;
+      color: black;
     }
     .rate_number {
       width: 50px;
@@ -47,5 +31,23 @@
     }
     .test-class {
       background-color: #f47442;
+    }
+    #rate_btn {
+      text-align: center;
+    }
+    #favorite_label {
+      text-align: center;
+    }
+    #unfavorite_btn {
+      text-align: center;
+    }
+    #favorite_btn {
+      text-align: center;
+    }
+    #details_btn {
+      text-align: center;
+    }
+    #ingredients_block{
+      text-align: center;
     }
 </style>
