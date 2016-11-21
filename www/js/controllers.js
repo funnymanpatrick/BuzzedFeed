@@ -1,5 +1,5 @@
 angular.module('app.controllers', [])
-
+//FIXME: seperate controllers into seperate files
 
 // This controller works on the 'Stock' tab. It gets all drinks, alcohol and mixers,
 // and acts as an intermediary between the user ingredient inputs and the database.
@@ -104,24 +104,31 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	}
 
 }])
-   
+
+// This controller works on the 'Drinks' tab. It gets all drinks, alcohol and mixers,
+// and acts as an intermediary between the user drinks inputs and the database.
 .controller('drinksCtrl', ['$scope', '$stateParams', 'GetDrinks', 'GetAlcohol', 'GetMixers',
 function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
-	//Text to be read by Angular
+	// Text to be read by Angular
 	$scope.drink = '';
 	$scope.rating = '';
 	$scope.favorited = '';
 
+  // Text displayed on 'List all Drinks' or 'List Favorited Drinks'
 	$scope.drink_list = [];
 
+  // All drinks, alcohol and mixers in database
 	$scope.all_drinks = d;
 	$scope.all_alcohol = a;
 	$scope.all_mixers = m;
 
+  // The name of the currently searched drink
 	$scope.searchedDrink = '';
 
+  // List of ingredients to be displayed
 	$scope.ingredients = [];
 
+  // Hides the display elements
 	$scope.hideDisplay = function(){
 		document.getElementById("rate_btn").style.display="none";
 		document.getElementById("favorite_btn").style.display="none";
@@ -133,6 +140,7 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		$scope.ingredients = [];
 	}
 
+  // Shows the display elements
 	$scope.showDisplay = function(){
 		document.getElementById("rate_btn").style.display="block";
 		if($scope.favorited=='F'){
@@ -148,12 +156,17 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		$scope.ingredients = [];
 	}
 
+  // Favorites the currently searched drink for the user in the database
+  // Activated on 'Favorite' button press
+  // Button will only ever be visible if drink is currently unfavorited
 	$scope.faveDrink = function(){
 		nam = $scope.searchedDrink;
 		for (i=0; i<$scope.all_drinks.length; i++){
+      // Finds the drink
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].fav = 't';
 				$scope.favorited = 'T';
+        // Changes 'Favorite' button to 'Unfavorite'
 				document.getElementById("favorite_btn").style.display="none";
 				document.getElementById("unfavorite_btn").style.display="block";
 				return;
@@ -161,12 +174,17 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	}
 
+  // Unfavorites the currently searched drink for the user in the database
+  // Activated on 'Unfavorite' button press
+  // Button will only ever be visible if drink is currently favorited
 	$scope.unfaveDrink = function(){
 		nam = $scope.searchedDrink;
 		for (i=0; i<$scope.all_drinks.length; i++){
+      //Finds the drink
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].fav = 'f';
 				$scope.favorited = 'F';
+        // Changes 'Unfavorite' button to 'Favorite'
 				document.getElementById("favorite_btn").style.display="block";
 				document.getElementById("unfavorite_btn").style.display="none";
 				return;
@@ -174,19 +192,25 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	}
 
+  // Displays all favorited drinks
+  // Activated on 'Show Favorites' button press
 	$scope.allFavDrink = function(){
 		$scope.hideDisplay();
+    // Goes through the drinks database and gets all the favorited ones
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if(d[i].fav == 't'){
 				console.log('hey this shit is true');
 				$scope.drink_list.push(d[i].name);
 			}
 		}
+    // Displays 'No Favorites' if none exist
 		if ($scope.drink_list.length === 0) {
 			$scope.drink_list.push('No Favorites');
 		}
 	}
 
+  // Displays all possible drinks
+  // Activated on 'Show All' button press
 	$scope.allDrink = function(){
 		$scope.hideDisplay();
 		for (i=0; i<$scope.all_drinks.length; i++){
@@ -197,45 +221,43 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	}
 
+  // Rates the currently selected drink based on user input
+  // Parameter: rat is the rating selected by the user, defined by an
+  // an Angular directive in the template
+  // Activated on any star button press
 	$scope.rate = function(rat){
-		// $scope.drink = [];
-		// nam = document.getElementById("rateDrink").value;
 		nam = $scope.searchedDrink;
-		// rat = document.getElementById("rateScore").value;
-
-		console.log(name, rat);
 
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if($scope.all_drinks[i].name.toUpperCase() == nam.toUpperCase()){
 				d[i].rating = parseFloat(rat);
 				$scope.rating = parseFloat(rat);
-				// $scope.drink.push('You rated ' + nam + ' a ' + parseFloat(rat));
 				return;
 			}
 		}
-		// $scope.drink.push(nam + 'not found');
 	}
 
+  // Searches for a specific drink based on user input in the search bar
+  // Activated on 'Search' button press
 	$scope.searchDrink = function(){
 		toSearch = document.getElementById("searchedDrink").value;
 
 		$scope.searchedDrink = toSearch;
 
+    // Goes through all drinks and looks for the user input 
 		for (i=0; i<$scope.all_drinks.length; i++){
 			if($scope.all_drinks[i].name.toUpperCase() == toSearch.toUpperCase()){
-				// $scope.drink.push($scope.all_drinks[i].name);
-				// $scope.drink.push('Rating: ' + $scope.all_drinks[i].rating.toString());
-				// $scope.drink.push('Favorited: ' + $scope.all_drinks[i].fav.toString().toUpperCase()); 
+        // Sets display variables 
 				$scope.drink = $scope.all_drinks[i].name;
 				$scope.rating = $scope.all_drinks[i].rating.toString();
 				$scope.favorited = $scope.all_drinks[i].fav.toString().toUpperCase();
 			}
 		}
 
+    // If not found, displays 'Unknown'
 		if ($scope.drink.length === 0) {
-			// $scope.drink.push(toSearch + ' was not found');
 			$scope.drink = 'Unknown';
-			$scope.rating = '';
+			$scope.rating = ''; //FIXME: currently doesn't display?
 			$scope.favorited = '';
 			$scope.hideDisplay()
 		}
@@ -244,12 +266,16 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	};
 
+  // Gets and displays ingredients for currently searched drink
+  // Activated on 'Ingredients' button press
 	$scope.getIngredients = function(){
 		$scope.ingredients = [];
 
+    // Finds the currently selected drink
 		for(i=0; i<$scope.all_drinks.length; i++){
 			current = $scope.all_drinks[i];
 			if(current.name.toUpperCase() == $scope.searchedDrink.toUpperCase()){
+        // Once found, gets all alcohol ingredients of that drink and amount owned by user
 				for(j=0; j<current.alcohol.length; j++){
 					to_add = {name: current.alcohol[j]};
 
@@ -258,9 +284,9 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 							to_add.owns = $scope.all_alcohol[k].ammount;
 						}
 					}
-
 					$scope.ingredients.push(to_add);
 				}
+        // Next, gets all mixer ingredients and amount owned by user
 				for(j=0; j<current.mixers.length; j++){
 					to_add = {name: current.mixers[j]};
 
@@ -277,7 +303,11 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	}
 
 }])
-   
+
+
+// This controller works on the 'Recommendations' tab.
+// It takes as user input and calls the Backend service where the recommendation
+// algorithm is running.
 .controller('recommendationsCtrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 	$scope.recommendations = [];
@@ -285,12 +315,19 @@ function ($scope, $stateParams) {
 	$scope.give_recommendations = function(){
 		$scope.recommendations.push('Bloody Mary');
 		$scope.recommendations.push('Gin and Tonic');
+    // FIXME: Currently interaction between controller and Backend does not work
 	}
 
 }])
 
+// This controller works on the 'Login' tab.
+// It takes user input and checks against cred data
 .controller('loginCtrl', ['$scope', '$stateParams', '$state',
  function ($scope, $stateParams, $state) {
+  // Gets user input into Username and Password fields and checks against cred data
+  // If succesful, takes User to stock tab
+  // If unsuccessful, displays 'Login Failed'
+  // Activated on 'Login' button press
  	$scope.login = function(){
  		let auth = false;
 		let usr = document.getElementById("userr").value;
@@ -300,13 +337,19 @@ function ($scope, $stateParams) {
  		else console.log("Login Failed");
  	}
  
+  // Takes user to register page
+  // Activate on 'Or create an account' button press
  	$scope.register = function(){
      	$state.go('registerSurvey');
  	}
  }])
  
+// This controller works on the 'Register' tab
+// It allows the user to register a new username/password combination
 .controller('registerSurveyCtrl', ['$scope', '$stateParams', '$state',
 	function ($scope, $stateParams, $state) {
+    // If username/password specifications are not met, 'Registration Failed' is displayed
+    // Otherwise a new user is added and the user is taken to the Stock tab
  		$scope.register = function(){
  		let auth = false;
  		let usr = document.getElementById("userrr").value;
