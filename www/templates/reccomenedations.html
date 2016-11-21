@@ -4,10 +4,16 @@
 
 <ion-view title="BuzzedFeed" id="page4">
   <ion-content padding="true" class="has-header">
-    <div id="reccomenedations-markdown1">
-      <p style="color:#000000;">THIS DOES NOTHING YET</p>
+    <div id="recommendations_label">
+      <button class="button button-block button-calm" ng-click="give_recommendations()">Recommend Me a Drink!</button>
+    </div>
 
-      <p style="color:#000000;">BUT IT WILL ONE DAY</p>
+    <div id="recommendations_block">
+    	<ul>
+    		<li ng-repeat="drink in recommendations">
+    			<span>{{drink}}</span>
+    		</li>
+    	</ul>
     </div>
   </ion-content>
 </ion-view>
