@@ -63,4 +63,10 @@
     #all_ingredients{
       text-align: center;
     }
+    #displayed_drinks{
+      text-align: center;
+    }
+    #recommendations_block{
+      text-align: center;
+    }
 </style>
