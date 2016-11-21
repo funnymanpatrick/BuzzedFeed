@@ -46,7 +46,19 @@ angular.module('app.routes', [])
     abstract:true
   })
 
-$urlRouterProvider.otherwise('/page1/page2')
+  .state('login', {
+    url: '/page5',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
+  })
+
+  .state('registerSurvey', {
+    url: '/page6',
+    templateUrl: 'templates/registerSurvey.html',
+    controller: 'registerSurveyCtrl'
+  })
+
+$urlRouterProvider.otherwise('page5')
 
   
 

@@ -266,4 +266,19 @@ function ($scope, $stateParams) {
 
 
 }])
+
+.controller('loginCtrl', ['$scope', '$stateParams', '$state',
+function ($scope, $stateParams, $state) {
+	$scope.login = function(){
+		$state.go('tabsController.stock');
+	}
+
+
+}])
+
+.controller('registerSurveyCtrl', ['$scope', '$stateParams',
+function ($scope, $stateParams) {
+
+
+}])
     
