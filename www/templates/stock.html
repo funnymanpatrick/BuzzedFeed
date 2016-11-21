@@ -4,39 +4,62 @@
 
 <ion-view title="BuzzedFeed" id="page2">
   <ion-content padding="true" class="has-header">
-    <ul style="list-style-type:disc">
+    <!-- <ul style="list-style-type:disc">
     	<li ng-repeat="drink in stock">
     		<span>{{drink}}</span>
-            <!-- Edit remaining amount -->
-            <!-- Delete drink -->
     	</li>
-    </ul>
+    </ul> -->
 
-    <input type="text" id="searchedAlcohol">
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Ingredient Search" id="searchedIngredient">
+    </label>
 
-    <button ng-click="searchAlcohol()"> Search </button>
+    <button ng-click="searchIngredient()" class="button button-block"> Search </button>
 
-    <br>
+    <button ng-click="getStock()" class="button button-small"> My Stock </button>
+    <button ng-click="listAllIngredients()" class="button button-small"> List All Ingredients </button>
 
-    <input type="text" id="addedAlcohol">
+    <div id="ingredient_label" style="display:none">
+      <h4>{{currentIngredient.name}}</h4>
+      <h5>{{currentIngredient.ammount}} L</h5>
+    </div>
 
-    <input type="number" id="addedAAmmount" class = "amount_label">
+    <!-- <input type="text" id="addedAlcohol"> -->
 
-    <button ng-click="addAlcohol()"> Add Booze </button>
+    <div id="set_ingredient_block" style="display:none">
+      <label class="item item-input">
+        <span class="input-label">New Amount</span>
+        <input type="tel" id="setIngredient">
+      </label>
+      <br>
+      <button ng-click="setIngredient()" class="button"> Set </button>
+      <br>
+      <br>
+      <button ng-click="removeIngredient()" class="button button-assertive"> Finished! </button>
+    </div>
 
-    <br>
+    <div id="my_stock" style="display:none">
+      <ul style="list-style-type:disc">
+        <li ng-repeat="ingredient in all_alcohol" ng-if="ingredient.ammount>0">
+          <span>{{ingredient.name}} - {{ingredient.ammount}} L</span>
+        </li>
+        <li ng-repeat="ingredient in all_mixers" ng-if="ingredient.ammount>0">
+          <span>{{ingredient.name}} - {{ingredient.ammount}} L</span>
+        </li>
+      </ul>
+    </div>
 
-    <input type="text" id="addedMixer">
-
-    <input type="number" id="addedMAmmount" class = "amount_label">
-
-    <button ng-click="addMixer()"> Add NAB </button>
-
-    <br>
-
-    <input type="text" id="removedAlcohol">
-
-    <button ng-click="removeAlcohol()"> Remove </button>
+    <div id="all_ingredients" style="display:none">
+      <ul style="list-style-type:disc">
+        <li ng-repeat="ingredient in all_alcohol">
+          <span>{{ingredient.name}}</span>
+        </li>
+        <li ng-repeat="ingredient in all_mixers">
+          <span>{{ingredient.name}}</span>
+        </li>
+      </ul>
+    </div>
 
   </ion-content>
 </ion-view>
