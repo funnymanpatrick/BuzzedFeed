@@ -8,6 +8,7 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	$scope.all_drinks = d;
 	$scope.all_alcohol = a;
 	$scope.all_mixers = m;
+
 	var xmlhttp = new XMLHttpRequest();
 var url = "data.json";
 
@@ -90,10 +91,8 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	$scope.rating = '';
 	$scope.favorited = '';
 
-	//Used to show output
 	$scope.drink_list = [];
 
-	//retrieves database info
 	$scope.all_drinks = d;
 	$scope.all_alcohol = a;
 	$scope.all_mixers = m;
@@ -102,7 +101,6 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 
 	$scope.ingredients = [];
 
-	//hides UI elements
 	$scope.hideDisplay = function(){
 		document.getElementById("rate_btn").style.display="none";
 		document.getElementById("favorite_btn").style.display="none";
@@ -114,7 +112,6 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		$scope.ingredients = [];
 	}
 
-	//shows UI elements
 	$scope.showDisplay = function(){
 		document.getElementById("rate_btn").style.display="block";
 		if($scope.favorited=='F'){
@@ -130,7 +127,6 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		$scope.ingredients = [];
 	}
 
-	//Allows a drink to be favorited
 	$scope.faveDrink = function(){
 		nam = $scope.searchedDrink;
 		for (i=0; i<$scope.all_drinks.length; i++){
@@ -144,7 +140,6 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	}
 
-	//Allows a drink to be unfavorited
 	$scope.unfaveDrink = function(){
 		nam = $scope.searchedDrink;
 		for (i=0; i<$scope.all_drinks.length; i++){
@@ -158,7 +153,6 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	}
 
-	//Displays a list of all favorited drinks
 	$scope.allFavDrink = function(){
 		$scope.hideDisplay();
 		for (i=0; i<$scope.all_drinks.length; i++){
@@ -172,18 +166,16 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	}
 
-	//Displays a list of all drinks
 	$scope.allDrink = function(){
 		$scope.hideDisplay();
 		for (i=0; i<$scope.all_drinks.length; i++){
 			$scope.drink_list.push(d[i].name);
 		}
-		if ($scope.drink_list.length === 0) {
+		if ($scope.drink.length === 0) {
 			$scope.drink_list.push('No Drinks');
 		}
 	}
 
-	//Allows a drink to be rated
 	$scope.rate = function(rat){
 		// $scope.drink = [];
 		// nam = document.getElementById("rateDrink").value;
@@ -203,7 +195,6 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		// $scope.drink.push(nam + 'not found');
 	}
 
-	//Searches database for a specific drink and enable option if found
 	$scope.searchDrink = function(){
 		toSearch = document.getElementById("searchedDrink").value;
 
@@ -232,7 +223,6 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		}
 	};
 
-	//Displays the ingredients for the searched drink
 	$scope.getIngredients = function(){
 		$scope.ingredients = [];
 
@@ -269,13 +259,17 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
    
 .controller('recommendationsCtrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
+	$scope.recommendations = [];
 
+	$scope.give_recommendations = function(){
+		$scope.recommendations.push('Bloody Mary');
+		$scope.recommendations.push('Gin and Tonic');
+	}
 
 }])
 
 .controller('loginCtrl', ['$scope', '$stateParams', '$state',
  function ($scope, $stateParams, $state) {
- 	//Checks login credentials are correct and then authorizes a login
  	$scope.login = function(){
  		let auth = false;
 		let usr = document.getElementById("userr").value;
@@ -288,13 +282,10 @@ function ($scope, $stateParams) {
  	$scope.register = function(){
      	$state.go('registerSurvey');
  	}
- 
- 
  }])
  
 .controller('registerSurveyCtrl', ['$scope', '$stateParams', '$state',
 	function ($scope, $stateParams, $state) {
-		//Allows a user to create an account;
  		$scope.register = function(){
  		let auth = false;
  		let usr = document.getElementById("userrr").value;
