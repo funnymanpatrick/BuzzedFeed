@@ -8,6 +8,21 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	$scope.all_drinks = d;
 	$scope.all_alcohol = a;
 	$scope.all_mixers = m;
+	var xmlhttp = new XMLHttpRequest();
+var url = "data.json";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        consol.log(myArr);
+        d = myArr.d;
+        a = myArr.a;
+        m = myArr.m;
+        console.log("Loaded Database");
+}
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
 
 	$scope.currentIngredient = {};
 
@@ -155,7 +170,7 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 		for (i=0; i<$scope.all_drinks.length; i++){
 			$scope.drink_list.push(d[i].name);
 		}
-		if ($scope.drink.length === 0) {
+		if ($scope.drink_list.length === 0) {
 			$scope.drink_list.push('No Drinks');
 		}
 	}

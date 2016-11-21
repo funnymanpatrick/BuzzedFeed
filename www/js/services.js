@@ -27,6 +27,10 @@ var m = [
 			{name: 'Lime Juice', ammount: 5}
 		];
 
+d = datas.d;
+a = datas.a;
+m = datas.m;
+
 var user = "Dirty Mike";
 var pass = "7cf2db5ec261a0fa27a502d3196a6f60";
 
