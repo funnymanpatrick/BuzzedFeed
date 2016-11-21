@@ -27,6 +27,9 @@ var m = [
 			{name: 'Lime Juice', ammount: 5}
 		];
 
+var user = "Dirty Mike";
+var pass = "7cf2db5ec261a0fa27a502d3196a6f60";
+
 
 angular.module('app.services', [])
 

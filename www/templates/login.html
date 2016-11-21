@@ -1,19 +1,20 @@
+<script src="js/md5.min.js"></script>
 <ion-view title="Login" id="page3">
   <ion-content padding="true" class="has-header">
     <form id="login-form6" class="list">
       <ion-list id="login-list2">
-        <label class="item item-input" id="login-input8">
+        <label class="item item-input" id="ur">
           <span class="input-label">Username</span>
-          <input type="text" placeholder="">
+          <input type="text" placeholder="" id="userr">
         </label>
-        <label class="item item-input" id="login-input9">
+        <label class="item item-input" id="ps">
           <span class="input-label">Password</span>
-          <input type="password" placeholder="">
+          <input type="password" placeholder="" id="passs">
         </label>
       </ion-list>
       <div class="spacer" style="height: 40px;"></div>
       <button ng-click="login()" id="login-button4" class="button button-stable  button-block">Log in</button>
-      <a href="#/page6" id="login-button5" class="button button-positive  button-block button-clear">Or create an account</a>
+      <a ng-click="register()" id="login-button5" class="button button-positive  button-block button-clear">Or create an account</a>
     </form>
   </ion-content>
 </ion-view>

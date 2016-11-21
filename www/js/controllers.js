@@ -270,7 +270,16 @@ function ($scope, $stateParams) {
 .controller('loginCtrl', ['$scope', '$stateParams', '$state',
 function ($scope, $stateParams, $state) {
 	$scope.login = function(){
-		$state.go('tabsController.stock');
+		var auth = false;
+		var usr = document.getElementById("userr").value;
+		var pas = document.getElementById("passs").value;
+		if (usr.toUpperCase() == user.toUpperCase() && md5(pas) == pass) auth = true;
+		if (auth) $state.go('tabsController.stock');
+		else console.log("Login Failed");
+	}
+
+	$scope.register = function(){
+    	$state.go('registerSurvey');
 	}
 
 
