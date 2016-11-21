@@ -4,37 +4,29 @@
 
 <ion-view title="BuzzedFeed" id="page3">
   <ion-content padding="true" class="has-header">
-    <!-- <ul style="list-style-type:disc">
-        <li ng-repeat="recipe in drink">
-    		  <span>{{recipe}}</span>
-    	 </li>
-    </ul> -->
 
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
       <input type="search" placeholder="Search" id="searchedDrink">
     </label>
 
-    <button ng-click="searchDrink()"> Search </button>
+    <button ng-click="searchDrink()" class="button button-block"> Search </button>
 
-    <button ng-click="allFavDrink()"> Show Favorites </button>
+    <button ng-click="allFavDrink()" class="button button-small"> Show Favorites </button>
 
-    <button ng-click="allDrink()"> Show All </button>
+    <button ng-click="allDrink()" class="button button-small"> Show All </button>
+
+    <br>
+    <br>
+    <br>
+
+    <div id="drink_label" style="display:none">
+      <h4>{{drink}}</h4>
+    </div>
 
     <br>
 
-    <div id="drink_label" style="display:none">Drink: {{drink}}</div>
-
-    <br>
-
-    <!-- <input type="text" id="rateDrink"> -->
-
-    <!-- <label class="item item-input" style="display:none" id="rate_label">
-      <i class="icon ion-star placeholder-icon"></i>
-      <input type="number" id="rateScore" class = "rate_number">
-    </label> -->
-
-    <span id="rate_btn" style="display:none">
+    <div id="rate_btn" style="display:none">
     <span ng-repeat="num in [1,2,3,4,5]">
       <a ng-click="rate(num)"> 
         <span ng-if="num>rating">
@@ -45,30 +37,33 @@
         </span>
       </a>
     </span>
-    </span>
-
-    
-    <!-- <button ng-click="rate()" style="display:none" id = "rate_btn"> Rate </button> -->
-
-
+    </div>
 
     <br>
 
     <div id="favorite_label" style="display:none">Favorited: {{favorited}}</div>
 
-    <button ng-click="faveDrink()" id = "favorite_btn" style="display:none"> Favorite </button>
+    <div id="favorite_btn" style="display:none">
+      <button ng-click="faveDrink()" class="button button-small"> Favorite </button>
+    </div>
 
-    <button ng-click="unfaveDrink()" id = "unfavorite_btn" style="display:none"> Unfavorite </button>
+    <div id="unfavorite_btn" style="display:none">
+      <button ng-click="unfaveDrink()" class="button button-small"> Unfavorite </button>
+    </div>
 
     <br>
 
-    <button id = "details_btn" style="display:none" ng-click="getIngredients()"> Ingredients </button>
+    <div id="details_btn" style="display:none">
+      <button ng-click="getIngredients()" class="button button-small"> Ingredients </button>
+    </div>
 
-    <ul>
-      <li ng-repeat="ingredient in ingredients">
-        <span>{{ingredient.name}} - {{ingredient.owns}}</span>
-      </li>
-    </ul>
+    <div id="ingredients_block">
+      <ul>
+        <li ng-repeat="ingredient in ingredients">
+          <span>{{ingredient.name}} - {{ingredient.owns}}</span>
+        </li>
+      </ul>
+    </div>
 
     <ul>
       <li ng-repeat="displayed_drink in drink_list">
