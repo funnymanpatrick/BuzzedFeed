@@ -311,11 +311,61 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 .controller('recommendationsCtrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 	$scope.recommendations = [];
+	$scope.all_drinks = d;
+	$scope.all_alcohol = a;
+	$scope.all_mixers = m;
 
 	$scope.give_recommendations = function(){
-		$scope.recommendations.push('Bloody Mary');
-		$scope.recommendations.push('Gin and Tonic');
-    // FIXME: Currently interaction between controller and Backend does not work
+		//$scope.recommendations.push('Bloody Mary');
+		//$scope.recommendations.push('Gin and Tonic');
+		for(i=0; i<$scope.all_drinks.length;i++){
+			current = $scope.all_drinks[i];
+
+			alcohol_in_stock = 0.0;
+			for(j=0; j<current.alcohol.length; j++)
+			{
+				for(k=0; k<$scope.all_alcohol.length; k++)
+				{
+					if(current.alcohol[j] == $scope.all_alcohol[k].name)
+					{
+						if($scope.all_alcohol[k].ammount > 0.0)
+						{
+							alcohol_in_stock++;
+						}
+					}
+				}
+			}
+
+			mixers_in_stock = 0.0;
+			for(j=0; j<current.mixers.length; j++)
+			{
+				for(k=0; k<$scope.all_mixers.length; k++)
+				{
+					if(current.mixers[j] == $scope.all_mixers[k].name)
+					{
+						if($scope.all_mixers[k].ammount > 0.0)
+						{
+							mixers_in_stock++;
+						}
+					}
+				}
+			}
+
+			alc_per = (alcohol_in_stock / current.alcohol.length);
+			mix_per = (mixers_in_stock / current.mixers.length);
+			fav_vect = 1.0; 
+			if(current.fav == 't')
+			{
+				fav_vect = 2.0;
+			}
+			rec_val = ( (alc_per * current.rating) + (mix_per * current.rating) ) * fav_vect;
+			current.rec = rec_val;
+		}
+		all_drinks.sort(function(a, b) { return a.rec - b.rec;});
+		for(i=0; i<5; i++)
+		{
+			$scope.recommendations.push(all_drinks[i].name);
+		}
 	}
 
 }])
