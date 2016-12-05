@@ -6,9 +6,32 @@ angular.module('app.controllers', [])
 .controller('stockCtrl', ['$scope', '$stateParams', 'GetDrinks', 'GetAlcohol', 'GetMixers',
 function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
 	// Gets all drinks, alcohol and mixers
-  $scope.all_drinks = d;
-	$scope.all_alcohol = a;
-	$scope.all_mixers = m;
+
+	var storage = window.localStorage;
+
+	if(storage.getItem("user")=="dirty mike"){
+	  	$scope.all_drinks = d;
+		$scope.all_alcohol = a;
+		$scope.all_mixers = m;
+	}
+	else{
+		for(var i = 0; i<d.length; i++){
+			d[i].rating = 0.0;
+			d[i].fav = "f";
+		}
+
+		for(i = 0; i<a.length; i++){
+			a[i].ammount = 0;
+		}
+
+		for(i = 0; i<m.length; i++){
+			m[i].ammount = 0;
+		}
+
+		$scope.all_drinks = d;
+		$scope.all_alcohol = a;
+		$scope.all_mixers = m;
+	}
 
   // Pulls in database from a json file
 	var xmlhttp = new XMLHttpRequest();
@@ -17,7 +40,7 @@ function ($scope, $stateParams, GetDrinks, GetAlcohol, GetMixers) {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var myArr = JSON.parse(this.responseText);
-        consol.log(myArr);
+        console.log(myArr);
         d = myArr.d;
         a = myArr.a;
         m = myArr.m;
@@ -316,8 +339,8 @@ function ($scope, $stateParams) {
 	$scope.all_mixers = m;
 
 	$scope.give_recommendations = function(){
-		//$scope.recommendations.push('Bloody Mary');
-		//$scope.recommendations.push('Gin and Tonic');
+		$scope.recommendations = [];
+
 		for(i=0; i<$scope.all_drinks.length;i++){
 			current = $scope.all_drinks[i];
 
@@ -361,10 +384,10 @@ function ($scope, $stateParams) {
 			rec_val = ( (alc_per * current.rating) + (mix_per * current.rating) ) * fav_vect;
 			current.rec = rec_val;
 		}
-		all_drinks.sort(function(a, b) { return a.rec - b.rec;});
+		$scope.all_drinks.sort(function(a, b) { return b.rec - a.rec;});
 		for(i=0; i<5; i++)
 		{
-			$scope.recommendations.push(all_drinks[i].name);
+			$scope.recommendations.push($scope.all_drinks[i].name);
 		}
 	}
 
@@ -383,7 +406,12 @@ function ($scope, $stateParams) {
 		let usr = document.getElementById("userr").value;
 		let pas = document.getElementById("passs").value;
  		if (usr.toUpperCase() == user.toUpperCase() && md5(pas) == pass) auth = true;
- 		if (auth) $state.go('tabsController.stock');
+ 		if (auth) {
+ 			var storage = window.localStorage;
+
+ 			storage.setItem("user", usr);
+ 			$state.go('tabsController.stock');
+ 		}
  		else console.log("Login Failed");
  	}
  
@@ -404,9 +432,18 @@ function ($scope, $stateParams) {
  		let auth = false;
  		let usr = document.getElementById("userrr").value;
  		let pas = document.getElementById("passss").value;
- 		if (usr != "" && pas != "") auth = true;
-     	if (auth) $state.go('tabsController.stock');
-     	else console.log("Registration Failed");
+
+ 		if (usr != '' && pas != '') auth = true;
+     	if (auth) {
+
+     		var storage = window.localStorage;
+			storage.setItem("user", usr);
+
+     		$state.go('tabsController.stock');
+     	}
+     	else {
+     		console.log("Registration Failed");
  		}
+ 	}
  }])
     
